@@ -1,0 +1,39 @@
+server:
+  port: 8081
+  tomcat:
+    uri-encoding: UTF-8
+ # servlet:
+ #   context-path: /activiti
+
+
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
+
+spring:
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+  datasource: 
+    #driver-class-name: oracle.jdbc.driver.OracleDriver
+    driver-class-name: com.mysql.jdbc.Driver
+    #url: jdbc:oracle:thin:@172.20.11.25:1521:orcl
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF8&allowMultiQueries=true
+    username: root
+    password: 1234
+    platform: mysql
+    type: com.alibaba.druid.pool.DruidDataSource
+  application:
+    name: activiti_component
+  activiti:
+    check-process-definitions: false
+    databaseSchemaUpdate: true
+    #取消校验ACT_Id表，用自己的视图
+    #dbIdentityUsed: false
+    asyncExecutorActivate: false
+business:
+  businessUrl: http:localhost:8080/queryTasksByUserId
+
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tydic.activiti_component.dao.TaskAssigneeDao" >
+    <resultMap id="BaseResultMap" type="com.tydic.activiti_component.entity.TaskAssignee" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="sid" property="sid" jdbcType="VARCHAR" />
+        <result column="assignee" property="assignee" jdbcType="VARCHAR" />
+        <result column="rolegroup" property="rolegroup" jdbcType="VARCHAR" />
+        <result column="assigneeType" property="assigneeType" jdbcType="VARCHAR" />
+        <result column="assigneename" property="assigneename" jdbcType="VARCHAR" />
+        <result column="activitiname" property="activitiname" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id, sid, assignee, rolegroup,assigneeType,assigneename,assignee
+    </sql>
+    
+     <insert id="save">
+     	insert into act_comm_taskassignee(sid, assignee, rolegroup,assigneeType,assigneename,activitiname)
+     	values(#{sid,jdbcType=VARCHAR},#{assignee,jdbcType=VARCHAR},#{rolegroup,jdbcType=VARCHAR},#{assigneeType,jdbcType=VARCHAR},#{assigneename,jdbcType=VARCHAR},#{activitiname,jdbcType=VARCHAR})
+     </insert>
+	
+	<select id="selectBySid" resultMap="BaseResultMap" parameterType="String">
+		 select * from  act_comm_taskassignee where sid= #{sid}
+	</select>	
+</mapper>
